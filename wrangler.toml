@@ -4,7 +4,8 @@ compatibility_date = "2023-03-05"
 usage_model = "bundled"
 env = { }
 kv_namespaces = [
-  { binding = "kv", id = "652e5c6c1d5643d9863a63b1f9ef9558" }
+  { binding = "kv", id = "652e5c6c1d5643d9863a63b1f9ef9558" },
+  { pattern = "chat.gzhu.app", custom_domain = true }
 ]
 
 [triggers]
