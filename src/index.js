@@ -59,7 +59,7 @@ const handleRequest = async (request, env) => {
     if (rateLimitCount > MAX_REQUESTS) {
       return new Response('Too many requests', { status: 429, header: CORS_HEADERS });
     }
-
+    console.log(env.API_KEYS);
     // Forward a POST request to the upstream URL and return the response
     const api_key = randomChoice(JSON.parse(env.API_KEYS));
     const upstreamResponse = await fetch(UPSTREAM_URL, {
@@ -101,7 +101,8 @@ const handleRequest = async (request, env) => {
 export default {
   async fetch(request, env) {
     const { pathname } = new URL(request.url);
-    if (pathname !== '/v1/') {
+    
+    if (!pathname.startsWith("/v1/")) {
       return new Response('Not found', { status: 404, headers: CORS_HEADERS });
     }
 
